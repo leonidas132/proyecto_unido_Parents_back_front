@@ -11,6 +11,8 @@
     <title>Title</title>
 </head>
 <body>
+bienvenido burra vieja
+${usuario}
 
 </body>
 </html>

@@ -1,0 +1,1 @@
+2022-08-17 12:09:57.066 ERROR  -com.protalento.implementacion.ImplUsuario.insertar(ImplUsuario.java:91) - java.sql.SQLIntegrityConstraintViolationException: (conn=120) Duplicate entry 'User232@somostodos.com' for key 'PRIMARY'

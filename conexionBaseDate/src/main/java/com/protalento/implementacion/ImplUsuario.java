@@ -228,7 +228,7 @@ public class ImplUsuario implements IUsuario {
 
             IUsuario iUsuario= new ImplUsuario();
             System.out.println(user);
-         //   iUsuario.insertar(user);
+        //   iUsuario.insertar(user);
 
             // System.out.println(iUsuario.buscarPorCorreoClave("luismrocha132@gmail.com","Luis123"));
             // iUsuario.modificar(user);
@@ -243,8 +243,6 @@ public class ImplUsuario implements IUsuario {
             iUsuario.buscarPorCorreoClave("User132@gmail.com","User1234");
             System.out.println("----------------------------------------------------------");
 
-            iUsuario.buscarID("User132@gmail.com");
-            iUsuario.buscarPorCorreoClave("User132@gmail.com","User1234");
 
             iUsuario.listar();
 

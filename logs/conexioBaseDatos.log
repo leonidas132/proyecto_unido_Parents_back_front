@@ -92,3 +92,60 @@
  User correo: User132@gmail.com' clave: User1234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T12:00:04 intentosFallidos: 0, 
  User correo: User232@mail.com' clave: User2234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T01:06:13 intentosFallidos: 0, 
  User correo: User232@somostodos.com' clave: User3234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T01:09:40 intentosFallidos: 0]
+2022-08-17 12:09:57.041 DEBUG  -com.protalento.implementacion.ImplUsuario.insertar(ImplUsuario.java:86) - ClientPreparedStatement{sql:'insert into usuarios(correo,clave,fechaCreacion,fechaUltimoAcceso) values(?,aes_encrypt(?,?),?,?)', parameters:['User232@somostodos.com','User3234','develoment','2022-08-17','2022-08-17 12:09:57']}
+2022-08-17 12:09:57.053 INFO   -com.protalento.implementacion.ImplUsuario.insertar(ImplUsuario.java:87) - 
+ User correo: User232@somostodos.com' clave: User3234' fechaCreacion: 2022-09-11 fechaUltimoAcceso: 2022-08-17T12:09:56.748951400 intentosFallidos: 0
+2022-08-17 12:09:57.112 DEBUG  -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:63) - ClientPreparedStatement{sql:'select aes_decrypt(clave,?) as clave,fechaCreacion,fechaUltimoAcceso,intentosFallidos from usuarios where correo=?', parameters:['develoment','User132@gmail.com']}
+2022-08-17 12:09:57.114 INFO   -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:64) - 
+ User correo: User132@gmail.com' clave: User1234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T12:00:04 intentosFallidos: 0
+2022-08-17 12:09:57.117 DEBUG  -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:63) - ClientPreparedStatement{sql:'select aes_decrypt(clave,?) as clave,fechaCreacion,fechaUltimoAcceso,intentosFallidos from usuarios where correo=?', parameters:['develoment','User132@mail.com']}
+2022-08-17 12:09:57.119 INFO   -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:64) - null
+2022-08-17 12:09:57.123 DEBUG  -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:63) - ClientPreparedStatement{sql:'select aes_decrypt(clave,?) as clave,fechaCreacion,fechaUltimoAcceso,intentosFallidos from usuarios where correo=?', parameters:['develoment','User132@gmail.com']}
+2022-08-17 12:09:57.125 INFO   -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:64) - 
+ User correo: User132@gmail.com' clave: User1234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T12:00:04 intentosFallidos: 0
+2022-08-17 12:09:57.138 DEBUG  -com.protalento.implementacion.ImplUsuario.ActualizarIntentosFallidos(ImplUsuario.java:211) - ClientPreparedStatement{sql:'update usuarios set intentosFallidos = (intentosFallidos+1) where correo=?', parameters:['User132@gmail.com']}
+2022-08-17 12:09:57.139 INFO   -com.protalento.implementacion.ImplUsuario.ActualizarIntentosFallidos(ImplUsuario.java:212) - 
+ User correo: User132@gmail.com' clave: User1234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T12:00:04 intentosFallidos: 0
+2022-08-17 12:09:57.147 DEBUG  -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:63) - ClientPreparedStatement{sql:'select aes_decrypt(clave,?) as clave,fechaCreacion,fechaUltimoAcceso,intentosFallidos from usuarios where correo=?', parameters:['develoment','User12@mail.cm']}
+2022-08-17 12:09:57.149 INFO   -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:64) - null
+2022-08-17 12:09:57.153 DEBUG  -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:63) - ClientPreparedStatement{sql:'select aes_decrypt(clave,?) as clave,fechaCreacion,fechaUltimoAcceso,intentosFallidos from usuarios where correo=?', parameters:['develoment','User132@gmail.com']}
+2022-08-17 12:09:57.155 INFO   -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:64) - 
+ User correo: User132@gmail.com' clave: User1234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T12:00:04 intentosFallidos: 1
+2022-08-17 12:09:57.190 DEBUG  -com.protalento.implementacion.ImplUsuario.actualizarFechasUltimoAcceso(ImplUsuario.java:194) - ClientPreparedStatement{sql:'update usuarios set fechaUltimoAcceso=? ,intentosFallidos=? where correo =?', parameters:['2022-08-17 12:09:57',0,'User132@gmail.com']}
+2022-08-17 12:09:57.192 INFO   -com.protalento.implementacion.ImplUsuario.actualizarFechasUltimoAcceso(ImplUsuario.java:195) - 
+ User correo: User132@gmail.com' clave: User1234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T12:00:04 intentosFallidos: 1
+2022-08-17 12:09:57.199 DEBUG  -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:63) - ClientPreparedStatement{sql:'select aes_decrypt(clave,?) as clave,fechaCreacion,fechaUltimoAcceso,intentosFallidos from usuarios where correo=?', parameters:['develoment','User132@gmail.com']}
+2022-08-17 12:09:57.201 INFO   -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:64) - 
+ User correo: User132@gmail.com' clave: User1234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T12:09:57 intentosFallidos: 0
+2022-08-17 12:09:57.228 DEBUG  -com.protalento.implementacion.ImplUsuario.listar(ImplUsuario.java:154) - ClientPreparedStatement{sql:'select correo, aes_decrypt(clave,?) as clave,fechaCreacion,fechaUltimoAcceso,intentosFallidos from usuarios', parameters:['develoment']}
+2022-08-17 12:09:57.231 INFO   -com.protalento.implementacion.ImplUsuario.listar(ImplUsuario.java:155) - [
+ User correo: User132@gmail.com' clave: User1234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T12:09:57 intentosFallidos: 0, 
+ User correo: User232@mail.com' clave: User2234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T01:06:13 intentosFallidos: 0, 
+ User correo: User232@somostodos.com' clave: User3234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T01:09:40 intentosFallidos: 0]
+2022-08-17 15:07:51.320 DEBUG  -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:63) - ClientPreparedStatement{sql:'select aes_decrypt(clave,?) as clave,fechaCreacion,fechaUltimoAcceso,intentosFallidos from usuarios where correo=?', parameters:['develoment','User132@gmail.com']}
+2022-08-17 15:07:51.331 INFO   -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:64) - 
+ User correo: User132@gmail.com' clave: User1234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T15:05:23 intentosFallidos: 0
+2022-08-17 15:07:51.334 DEBUG  -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:63) - ClientPreparedStatement{sql:'select aes_decrypt(clave,?) as clave,fechaCreacion,fechaUltimoAcceso,intentosFallidos from usuarios where correo=?', parameters:['develoment','User132@mail.com']}
+2022-08-17 15:07:51.335 INFO   -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:64) - null
+2022-08-17 15:07:51.339 DEBUG  -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:63) - ClientPreparedStatement{sql:'select aes_decrypt(clave,?) as clave,fechaCreacion,fechaUltimoAcceso,intentosFallidos from usuarios where correo=?', parameters:['develoment','User132@gmail.com']}
+2022-08-17 15:07:51.341 INFO   -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:64) - 
+ User correo: User132@gmail.com' clave: User1234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T15:05:23 intentosFallidos: 0
+2022-08-17 15:07:51.354 DEBUG  -com.protalento.implementacion.ImplUsuario.ActualizarIntentosFallidos(ImplUsuario.java:211) - ClientPreparedStatement{sql:'update usuarios set intentosFallidos = (intentosFallidos+1) where correo=?', parameters:['User132@gmail.com']}
+2022-08-17 15:07:51.357 INFO   -com.protalento.implementacion.ImplUsuario.ActualizarIntentosFallidos(ImplUsuario.java:212) - 
+ User correo: User132@gmail.com' clave: User1234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T15:05:23 intentosFallidos: 0
+2022-08-17 15:07:51.365 DEBUG  -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:63) - ClientPreparedStatement{sql:'select aes_decrypt(clave,?) as clave,fechaCreacion,fechaUltimoAcceso,intentosFallidos from usuarios where correo=?', parameters:['develoment','User12@mail.cm']}
+2022-08-17 15:07:51.367 INFO   -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:64) - null
+2022-08-17 15:07:51.372 DEBUG  -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:63) - ClientPreparedStatement{sql:'select aes_decrypt(clave,?) as clave,fechaCreacion,fechaUltimoAcceso,intentosFallidos from usuarios where correo=?', parameters:['develoment','User132@gmail.com']}
+2022-08-17 15:07:51.374 INFO   -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:64) - 
+ User correo: User132@gmail.com' clave: User1234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T15:05:23 intentosFallidos: 1
+2022-08-17 15:07:51.394 DEBUG  -com.protalento.implementacion.ImplUsuario.actualizarFechasUltimoAcceso(ImplUsuario.java:194) - ClientPreparedStatement{sql:'update usuarios set fechaUltimoAcceso=? ,intentosFallidos=? where correo =?', parameters:['2022-08-17 15:07:51',0,'User132@gmail.com']}
+2022-08-17 15:07:51.474 INFO   -com.protalento.implementacion.ImplUsuario.actualizarFechasUltimoAcceso(ImplUsuario.java:195) - 
+ User correo: User132@gmail.com' clave: User1234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T15:05:23 intentosFallidos: 1
+2022-08-17 15:07:51.495 DEBUG  -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:63) - ClientPreparedStatement{sql:'select aes_decrypt(clave,?) as clave,fechaCreacion,fechaUltimoAcceso,intentosFallidos from usuarios where correo=?', parameters:['develoment','User132@gmail.com']}
+2022-08-17 15:07:51.497 INFO   -com.protalento.implementacion.ImplUsuario.buscarID(ImplUsuario.java:64) - 
+ User correo: User132@gmail.com' clave: User1234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T15:07:51 intentosFallidos: 0
+2022-08-17 15:07:51.523 DEBUG  -com.protalento.implementacion.ImplUsuario.listar(ImplUsuario.java:154) - ClientPreparedStatement{sql:'select correo, aes_decrypt(clave,?) as clave,fechaCreacion,fechaUltimoAcceso,intentosFallidos from usuarios', parameters:['develoment']}
+2022-08-17 15:07:51.524 INFO   -com.protalento.implementacion.ImplUsuario.listar(ImplUsuario.java:155) - [
+ User correo: User132@gmail.com' clave: User1234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T15:07:51 intentosFallidos: 0, 
+ User correo: User232@mail.com' clave: User2234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T01:06:13 intentosFallidos: 0, 
+ User correo: User232@somostodos.com' clave: User3234' fechaCreacion: 2022-08-17 fechaUltimoAcceso: 2022-08-17T01:09:40 intentosFallidos: 0]
