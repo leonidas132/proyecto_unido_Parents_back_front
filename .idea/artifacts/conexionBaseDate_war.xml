@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="conexionBaseDate:war">
+    <output-path>$PROJECT_DIR$/conexionBaseDate/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>conexionBaseDate</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="conexionBaseDate.war">
+      <element id="artifact" artifact-name="conexionBaseDate:war exploded" />
+    </root>
+  </artifact>
+</component>
