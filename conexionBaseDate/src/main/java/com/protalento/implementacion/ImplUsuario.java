@@ -2,8 +2,12 @@ package com.protalento.implementacion;
 
 import com.protalento.conexion.Conexion;
 import com.protalento.entidadJdbc.User;
+import com.protalento.excepcion.PatronExcepcion;
 import com.protalento.interfacesJdbc.IUsuario;
 import com.protalento.utilidades.Fechas;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +18,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ImplUsuario implements IUsuario {
+
+    //Log4j es una biblioteca de código abierto desarrollada en
+    // Java por la Apache Software Foundation que permite a
+    // los desarrolladores de software escribir mensajes de registro,
+    // cuyo propósito es dejar constancia de una determinada transacción en tiempo de ejecución.
+    private static Logger logger = LogManager.getLogger();
     private PreparedStatement preparedStatementBuscarId;
     private PreparedStatement preparedStatementInsertar;
     private PreparedStatement preparedStatementModificar;
@@ -50,9 +60,12 @@ public class ImplUsuario implements IUsuario {
                 user.setIntentosFallidos(resultSet.getByte("intentosFallidos"));
 
             }
-
+            logger.debug(preparedStatementBuscarId);
+            logger.info(user);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.error(e);
+        } catch (PatronExcepcion e) {
+           logger.error(e);
         }
         return user;
     }
@@ -70,11 +83,14 @@ public class ImplUsuario implements IUsuario {
             preparedStatementInsertar.setString(4,Fechas.getString(LocalDate.now()));
             preparedStatementInsertar.setString(5,Fechas.getString(LocalDateTime.now()));
 
+            logger.debug(preparedStatementInsertar);
+            logger.info(user);
             return preparedStatementInsertar.executeUpdate()==1;
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+           logger.error(e);
         }
+        return false;
     }
 
     @Override
@@ -88,24 +104,32 @@ public class ImplUsuario implements IUsuario {
             preparedStatementModificar.setString(2,conexion.getLlave());
             preparedStatementModificar.setString(3,Fechas.getString(user.getFechaCreacion()));
             preparedStatementModificar.setString(4, user.getCorreo());
+
+            logger.debug(preparedStatementModificar);
+            logger.info(user);
             return preparedStatementModificar.executeUpdate() == 1;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+           logger.error(e);
         }
+        return false;
     }
 
     @Override
     public boolean eliminar(User user) {
         String sql = "delete from usuarios where correo = ?";
         try {
-            if(null == preparedStatementEliminar){
+            if (null == preparedStatementEliminar) {
                 preparedStatementEliminar = conexion.conexiondb().prepareStatement(sql);
             }
-            preparedStatementEliminar.setString(1,user.getCorreo());
-            return preparedStatementEliminar.executeUpdate()==1;
+            preparedStatementEliminar.setString(1, user.getCorreo());
+
+            logger.debug(preparedStatementEliminar);
+            logger.info(user);
+            return preparedStatementEliminar.executeUpdate() == 1;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.error(e);
         }
+        return false;
     }
 
     @Override
@@ -127,10 +151,12 @@ public class ImplUsuario implements IUsuario {
                 user.setIntentosFallidos(resultSet.getByte("intentosFallidos"));
                 lista.add(user);
             }
-            while (resultSet.next()){
-            }
+            logger.debug(preparedStatementListar);
+            logger.info(lista);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.error(e);
+        } catch (PatronExcepcion e) {
+           logger.error(e);
         }
         return lista;
     }
@@ -141,8 +167,11 @@ public class ImplUsuario implements IUsuario {
         // si usuario diferente de null y usuario.getClave == clave entoces actualisamos
         //fecha ultimo acceso t retornamos el usuario
         if(null != usuario && usuario.getClave().equals(clave)){
-            actualizarFechasUltimoAcceso(usuario);
-            return usuario;
+            // nos aseguramos que actualize la informacion
+            if(actualizarFechasUltimoAcceso(usuario)){
+                usuario = buscarID(correo);
+            }
+
             //de lo contrario si el usuario es diferente de null y si  susario.getClave es diferente de clave
             // entoces actualizamos los intentos fallidos y retornamos null
         } else if (null != usuario && !usuario.getClave().equals(clave)) {
@@ -162,11 +191,13 @@ public class ImplUsuario implements IUsuario {
             preparedStatementActualizarFechaUltimoAcceso.setString(1, Fechas.getString(LocalDateTime.now()));
             preparedStatementActualizarFechaUltimoAcceso.setByte(2,(byte)0);
             preparedStatementActualizarFechaUltimoAcceso.setString(3,user.getCorreo());
+            logger.debug(preparedStatementActualizarFechaUltimoAcceso);
+            logger.info(user);
             return preparedStatementActualizarFechaUltimoAcceso.executeUpdate()==1;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+           logger.error(e);
         }
-
+      return false;
     }
 
     @Override
@@ -177,39 +208,51 @@ public class ImplUsuario implements IUsuario {
                 preparedStatementActualizarIntentosFallidos = conexion.conexiondb().prepareStatement(sql);
             }
             preparedStatementActualizarIntentosFallidos.setString(1,user.getCorreo());
+            logger.debug(preparedStatementActualizarIntentosFallidos);
+            logger.info(user);
             return preparedStatementActualizarIntentosFallidos.executeUpdate() == 1;
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.error(e);
         }
+        return false;
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
-        User user = new User("User132@gmail.com","User1234",Fechas.getLocalDate("2022-10-11"), LocalDateTime.now(),(byte)0);
-        IUsuario iUsuario= new ImplUsuario();
-      //  System.out.println(user);
-      //  iUsuario.insertar(user);
+        try {
+            User user = new User("User232@somostodos.com","User3234",Fechas.getLocalDate("2022-09-11"), LocalDateTime.now(),(byte)0);
 
-      // System.out.println(iUsuario.buscarPorCorreoClave("luismrocha132@gmail.com","Luis123"));
-     // iUsuario.modificar(user);
-    //  System.out.println(iUsuario.buscarID("luismrocha132@gmail.com"));//
-    //  iUsuario.eliminar(user);
-        System.out.println(iUsuario.buscarID("User132@gmail.com"));
-        System.out.println(iUsuario.buscarID("User132@mail.com"));
-        System.out.println("-----------------------------------------------------");
 
-        System.out.println(iUsuario.buscarPorCorreoClave("User132@gmail.com","1234"));
-        System.out.println(iUsuario.buscarPorCorreoClave("User12@mail.com","User1234"));
-        System.out.println(iUsuario.buscarPorCorreoClave("User132@mail.com","User1234"));
-        System.out.println(iUsuario.buscarPorCorreoClave("User132@gmail.com","User1234"));
-        System.out.println("----------------------------------------------------------");
 
-        System.out.println(iUsuario.buscarID("User132@gmail.com"));
-        System.out.println(iUsuario.buscarPorCorreoClave("User132@gmail.com","User1234"));
+            IUsuario iUsuario= new ImplUsuario();
+            System.out.println(user);
+         //   iUsuario.insertar(user);
 
-        System.out.println(iUsuario.listar());
+            // System.out.println(iUsuario.buscarPorCorreoClave("luismrocha132@gmail.com","Luis123"));
+            // iUsuario.modificar(user);
+            //  System.out.println(iUsuario.buscarID("luismrocha132@gmail.com"));//
+            //  iUsuario.eliminar(user);
+            System.out.println(iUsuario.buscarID("User132@gmail.com"));
+            System.out.println(iUsuario.buscarID("User132@mail.com"));
+            System.out.println("-----------------------------------------------------");
+
+            iUsuario.buscarPorCorreoClave("User132@gmail.com","1234");
+            iUsuario.buscarPorCorreoClave("User12@mail.cm","User1234");
+            iUsuario.buscarPorCorreoClave("User132@gmail.com","User1234");
+            System.out.println("----------------------------------------------------------");
+
+            iUsuario.buscarID("User132@gmail.com");
+            iUsuario.buscarPorCorreoClave("User132@gmail.com","User1234");
+
+            iUsuario.listar();
+
+
+        } catch (PatronExcepcion e) {
+            logger.error(e);
+        }
+
     }
 
 

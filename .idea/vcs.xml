@@ -3,7 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Back-From_1" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/conexionBaseDate" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/padreIntegrador" vcs="Git" />
   </component>

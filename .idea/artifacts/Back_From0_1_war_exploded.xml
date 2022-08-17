@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="Back-From0.1:war exploded">
-    <output-path>$PROJECT_DIR$/Back-From0.1/target/BackFront</output-path>
+    <output-path>$PROJECT_DIR$/Back-From_1/target/BackFront</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
@@ -23,7 +23,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/Back-From0.1/target/BackFront/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/Back-From_1/target/BackFront/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="Back-From0.1/web/Web" />
     </root>

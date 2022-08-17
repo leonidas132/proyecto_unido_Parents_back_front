@@ -8,7 +8,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>../Back-From0.1</module>
+        <module>../Back-From_1</module>
         <module>../conexionBaseDate</module>
     </modules>
 

@@ -1,5 +1,8 @@
 package com.protalento.entidadJdbc;
 
+import com.protalento.excepcion.PatronExcepcion;
+import com.protalento.utilidades.Patrones;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -13,9 +16,10 @@ public class User {
     public User() {
     }
 
-    public User(String correo, String clave, LocalDate fechaCreacion, LocalDateTime fechaUltimoAcceso, Byte intentosFallidos) {
-        this.correo = correo;
-        this.clave = clave;
+    public User(String correo, String clave, LocalDate fechaCreacion, LocalDateTime fechaUltimoAcceso, Byte intentosFallidos) throws PatronExcepcion {
+        super();
+        setCorreo(correo);
+        setClave( clave);
         this.fechaCreacion = fechaCreacion;
         this.fechaUltimoAcceso = fechaUltimoAcceso;
         this.intentosFallidos = intentosFallidos;
@@ -33,16 +37,20 @@ public class User {
         return correo;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setCorreo(String correo) throws PatronExcepcion {
+        if(Patrones.esCorreo(correo)){
+            this.correo = correo;
+        }
     }
 
     public String getClave() {
         return clave;
     }
 
-    public void setClave(String clave) {
-        this.clave = clave;
+    public void setClave(String clave) throws PatronExcepcion {
+        if(Patrones.esClave(clave)){
+            this.clave = clave;
+        }
     }
 
     public LocalDate getFechaCreacion() {

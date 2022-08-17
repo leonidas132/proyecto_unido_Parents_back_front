@@ -1,0 +1,4 @@
+2022-08-17 11:15:31.325 DEBUG  -com.protalento.implementacion.ImplCategorias.insertar(ImplCategorias.java:78) - ClientPreparedStatement{sql:'insert into categorias (descripcion) values (?)', parameters:['vegetales']}
+2022-08-17 11:15:31.336 INFO   -com.protalento.implementacion.ImplCategorias.insertar(ImplCategorias.java:79) - Categorias id: 5 descripcion: vegetales
+2022-08-17 11:15:31.353 DEBUG  -com.protalento.implementacion.ImplCategorias.buscarID(ImplCategorias.java:53) - ClientPreparedStatement{sql:'select id,descripcion from categorias where id =?', parameters:[1]}
+2022-08-17 11:15:31.356 INFO   -com.protalento.implementacion.ImplCategorias.buscarID(ImplCategorias.java:54) - Categorias id: 1 descripcion: vegetales
